@@ -1,0 +1,6 @@
+__pycache__/
+env/
+results-kaggle-single-frame.txt
+dataset-kaggle/*
+!dataset-kaggle/get-and-preprocess-dataset.sh
+!dataset-kaggle/separate-frames.py

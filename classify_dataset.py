@@ -25,7 +25,7 @@ IMG_SIZE = (img_height, img_width)
 N_CHANNELS = 3
 IMG_SHAPE = IMG_SIZE + (N_CHANNELS,)
 
-N_CLASSES = 7
+N_CLASSES = 3
 
 # get environmental variables that control the execution
 model_name = os.getenv("HANDWASH_NN", "MobileNetV2")
@@ -39,8 +39,8 @@ num_extra_layers = int(os.getenv("HANDWASH_EXTRA_LAYERS", 0))
 
 # data augmentation
 data_augmentation = tf.keras.Sequential([
-    tf.keras.layers.experimental.preprocessing.RandomFlip('horizontal'),
-    tf.keras.layers.experimental.preprocessing.RandomRotation(0.2),
+    tf.keras.layers.RandomFlip('horizontal'),
+    tf.keras.layers.RandomRotation(0.2),
 ])
 
 def freeze_model(model):
@@ -242,7 +242,7 @@ def fit_model(name, model, train_ds, val_ds, test_ds, weights_dict):
     es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=10)
     mc = ModelCheckpoint(monitor='val_accuracy', mode='max',
                          verbose=1, save_freq='epoch',
-                         filepath=name+'.{epoch:02d}-{val_accuracy:.2f}.h5')
+                         filepath=name+'.{epoch:02d}-{val_accuracy:.2f}.keras')
 
     print("fitting the model...")
     history = model.fit(train_ds,
