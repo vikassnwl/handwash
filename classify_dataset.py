@@ -251,7 +251,7 @@ def fit_model(name, model, train_ds, val_ds, test_ds, weights_dict):
                         class_weight=weights_dict,
                         callbacks=[es]) # add mc to save after each epoch
 
-    model.save(name + "final-model")
+    model.save(name + "_final-model.keras")
 
     # visualise accuracy
     train_acc = history.history['accuracy']
