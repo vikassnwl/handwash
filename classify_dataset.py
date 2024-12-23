@@ -30,7 +30,7 @@ N_CLASSES = 3
 # get environmental variables that control the execution
 model_name = os.getenv("HANDWASH_NN", "MobileNetV2")
 num_trainable_layers = int(os.getenv("HANDWASH_NUM_LAYERS", 0))
-num_epochs = int(os.getenv("HANDWASH_NUM_EPOCHS", 20))
+num_epochs = int(os.getenv("HANDWASH_NUM_EPOCHS", 5))
 # how many frames to concatenate as input to the TimeDistributed network?
 num_frames = int(os.getenv("HANDWASH_NUM_FRAMES", 5))
 suffix = os.getenv("HANDWASH_SUFFIX", "")
